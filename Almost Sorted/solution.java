@@ -10,53 +10,53 @@ public class Solution {
 
     // Complete the almostSorted function below.
     static void almostSorted(int[] arr) {
-          int tmp[]=arr.clone();
-          int sw[]=arr.clone();
-          int rv[]=arr.clone();
+          int tmp[]=arr.clone();      //Array copied to sort 
+          int sw[]=arr.clone();      //Array copied to check swap is possible
+          int rv[]=arr.clone();      //Array copied to check reverse is possible
           int n=arr.length;
           Arrays.sort(tmp);
           int x=0,y=0;
            if(Arrays.equals(tmp,arr))
               {
-                  System.out.println("yes");
+                  System.out.println("yes");      //if a array already sorted then print "yes"
                   return ;
               }
            for(int i=0;i<n;i++)
               {
-                  if(tmp[i]!=arr[i]){
+                  if(tmp[i]!=arr[i]){                //finding the start index 
                      x=i;
                      break;
                   }
               }
               for(int i=n-1;i>=0;i--)
               {
-                  if(tmp[i]!=arr[i]){
+                  if(tmp[i]!=arr[i]){          //finding end index
                      y=i;
                      break;
                   }
               }
                  int t=sw[x];
-                 sw[x]=sw[y];
+                 sw[x]=sw[y];                      //swap srt index and end index value
                  sw[y]=t;
-                 if(Arrays.equals(tmp,sw))
+                 if(Arrays.equals(tmp,sw))          //check array sorted
                     {
                         System.out.println("yes");
-                        System.out.println("swap "+(x+1)+" "+(y+1));
+                        System.out.println("swap "+(x+1)+" "+(y+1));      
                         return ;
                     }
                      int p=x;
                    for(int i=y;i>=x;i--)
                        {
-                          rv[p]=arr[i];
+                          rv[p]=arr[i];          //reverse a array between srt and end index value
                           p++;
                        }
-                 if(Arrays.equals(tmp,rv))
+                 if(Arrays.equals(tmp,rv))           //check array sorted
                     {
                         System.out.println("yes");
                         System.out.println("reverse "+(x+1)+" "+(y+1));
                         return ;
                     }
-                    else
+                    else                          // if sorting no possible on both case then print "NO"
                      {
                          System.out.println("no");
                      }
